@@ -1,0 +1,15 @@
+{
+  "name": "QC Defect Tracking System",
+  "short_name": "QC Defect",
+  "description": "ระบบรายงานและติดตามปัญหาคุณภาพชิ้นงาน",
+  "lang": "th",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b1a3a",
+  "theme_color": "#1d4ed8",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,29 @@
+name = "qc-defect"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# เสิร์ฟไฟล์หน้าเว็บ (index.html ฯลฯ) ผ่าน Worker assets
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# ---------- D1 (ฐานข้อมูล) ----------
+# สร้างด้วย:  wrangler d1 create qc_defect
+# แล้วนำ database_id ที่ได้มาใส่ด้านล่าง
+[[d1_databases]]
+binding = "DB"
+database_name = "qc_defect"
+database_id = "PUT-YOUR-D1-DATABASE-ID-HERE"
+
+# ---------- R2 (เก็บรูปภาพ) ----------
+# สร้างด้วย:  wrangler r2 bucket create qc-defect-images
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "qc-defect-images"
+
+# ---------- ตัวแปร/Secret ----------
+# ตั้ง secret ด้วย (ไม่ hardcode token ในไฟล์):
+#   wrangler secret put LINE_CHANNEL_ACCESS_TOKEN
+#   wrangler secret put LINE_CHANNEL_SECRET        (ไว้ verify webhook signature)
+[vars]
+APP_NAME = "QC Defect Tracking System"

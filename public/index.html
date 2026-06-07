@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=5">
+<title>QC Defect Tracking System</title>
+<meta name="theme-color" content="#1d4ed8">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<section id="login">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="login-welcome">
+    <div class="badge">🔍</div>
+    <h1>WELCOME BACK</h1>
+    <h2>QC Defect Tracking</h2>
+    <p>ระบบรายงานและติดตามปัญหาคุณภาพชิ้นงาน</p>
+  </div>
+  <form class="login-card" id="loginForm" autocomplete="off">
+    <div class="field">
+      <span class="ic">👤</span>
+      <input id="empCode" placeholder=" " required>
+      <label for="empCode">รหัสพนักงาน</label>
+    </div>
+    <button class="btn" type="submit" style="width:100%;padding:15px;font-size:16px">เข้าสู่ระบบ →</button>
+    <div class="login-hint" id="loginHint">
+      โหมดสาธิต — ลองด้วย <code>admin</code> (หัวหน้า QC) · <code>qc01</code> (QC) · <code>op01</code> (ผลิต)
+    </div>
+  </form>
+</section>
+
+<!-- ============ APP ============ -->
+<div id="app">
+  <header class="topbar">
+    <div class="logo"><span class="mk">QC</span><span>Defect Tracking</span></div>
+    <span class="sp"></span>
+    <button class="iconbtn" id="fullBtn" title="โหมดเต็มจอ (TV)">⛶</button>
+    <button class="iconbtn" id="themeBtn" title="กลางวัน/กลางคืน">🌙</button>
+    <div class="who" id="whoBox"></div>
+    <button class="iconbtn" id="logoutBtn" title="ออกจากระบบ">⏻</button>
+  </header>
+
+  <main id="page" class="page"></main>
+
+  <nav class="nav" id="nav">
+    <span class="indicator" id="navInd"></span>
+  </nav>
+</div>
+
+<button class="btn ghost sm tv-exit" id="tvExit">✕ ออกจากโหมดเต็มจอ</button>
+<div id="modalHost"></div>
+<div id="toasts"></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script>
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+</script>
+</body>
+</html>
