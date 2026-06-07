@@ -1,7 +1,8 @@
 /* ตั้งค่าปลายทาง API ของระบบ
- * - ปล่อยว่าง ("")  = โหมดสาธิต (Demo) ทำงานในเครื่อง ไม่ต้องมี backend
- * - ใส่ URL Worker  = ใช้งานจริง เช่น "https://qc-defect.<subdomain>.workers.dev"
- *   (ถ้า deploy หน้าเว็บไว้บน Worker เดียวกัน ให้ใส่ "" หรือ location.origin ก็ได้)
+ * - ""                = ใช้ API จาก origin เดียวกัน (กรณีเสิร์ฟหน้าเว็บจาก Worker เดียวกัน — แนะนำ)
+ * - "https://..."     = ระบุ URL Worker เต็ม (กรณี host หน้าเว็บแยก เช่น GitHub Pages)
+ * - "demo"            = โหมดสาธิต ทำงานในเครื่องด้วย localStorage ไม่ต้องมี backend
+ *   (เปิดไฟล์ index.html ตรง ๆ แบบ file:// จะเข้าโหมดสาธิตอัตโนมัติ)
  */
 window.QC_CONFIG = {
   apiBase: ""

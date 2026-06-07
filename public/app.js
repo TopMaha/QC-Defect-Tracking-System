@@ -6,8 +6,11 @@
 'use strict';
 
 const CFG = window.QC_CONFIG || {};
-const API_BASE = (CFG.apiBase || '').replace(/\/$/, '');
-const DEMO = !API_BASE;
+const RAW = (CFG.apiBase || '').trim();
+// โหมดสาธิต: ตั้ง apiBase = "demo" ชัดเจน หรือเปิดไฟล์ตรง ๆ แบบ file:// (ไม่มี backend)
+const DEMO = RAW === 'demo' || (RAW === '' && location.protocol === 'file:');
+// API_BASE = "" หมายถึง same-origin (กรณีเสิร์ฟจาก Worker เดียวกัน), หรือใส่ URL Worker เต็ม
+const API_BASE = DEMO ? '' : RAW.replace(/\/$/, '');
 
 /* ---------------- state ---------------- */
 const state = {

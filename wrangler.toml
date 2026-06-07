@@ -13,13 +13,17 @@ binding = "ASSETS"
 [[d1_databases]]
 binding = "DB"
 database_name = "qc_defect"
-database_id = "PUT-YOUR-D1-DATABASE-ID-HERE"
+database_id = "cfc58d3c-7164-42e3-af9e-ff9fc31ed5f7"
 
 # ---------- R2 (เก็บรูปภาพ) ----------
 # สร้างด้วย:  wrangler r2 bucket create qc-defect-images
 [[r2_buckets]]
 binding = "IMAGES"
 bucket_name = "qc-defect-images"
+
+# ---------- Cron: แจ้งเตือนงานค้าง/เกินกำหนดเข้า LINE อัตโนมัติ ----------
+[triggers]
+crons = ["0 * * * *"]   # ทุกชั่วโมง
 
 # ---------- ตัวแปร/Secret ----------
 # ตั้ง secret ด้วย (ไม่ hardcode token ในไฟล์):
